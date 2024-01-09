@@ -5,7 +5,6 @@ function ll_InitializeDropdown(playerId)
     end
 end
 
-
 -- Example for pulling all license information from the database for use.
 RegisterCommand("getlicenseinfo", function(source, args, rawCommand)
     local query = "SELECT type, label FROM licenses"
@@ -21,3 +20,10 @@ RegisterCommand("getlicenseinfo", function(source, args, rawCommand)
         end
     end)
 end, false)
+
+-- Example of how we are going to fill the ID dropdown later on.
+RegisterCommand('ll_getOnlineIds', function()
+    for _, player in ipairs(GetPlayers()) do
+        print(player)
+    end
+end)

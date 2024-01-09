@@ -19,5 +19,3 @@ RegisterNUICallback('closeUI', function(data)
 end)
 
 RegisterKeyMapping('showuitest', 'Opens the UI', 'keyboard', "L")
-
-test
