@@ -26,12 +26,22 @@ end, false)
 
 
 
--- Example of how we are going to fill the ID dropdown later on.
+
+
 RegisterServerEvent('ll_getOnlineIds')
 AddEventHandler('ll_getOnlineIds', function()
-    local ll_playerIds = {}
-    for _, playerIds in ipairs(ll_playerIds) do
-        table.insert(ll_playerIds, playerIds)
-    end  
-    TriggerClientEvent('ll_receiveOnlineIds', -1, ll_playerIds)
+    local playerIds = {}
+    for _, player in ipairs(GetPlayers()) do
+        table.insert(playerIds, player)
+    end
+    TriggerClientEvent('ll_receiveOnlineIds', -1, playerIds)
+end)
+
+-- Export a function to get online player IDs
+exports('getOnlinePlayerIds', function()
+    local playerIds = {}
+    for _, player in ipairs(GetPlayers()) do
+        table.insert(playerIds, player)
+    end
+    return playerIds
 end)

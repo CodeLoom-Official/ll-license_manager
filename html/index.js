@@ -40,6 +40,15 @@ function selectLicense(license) {
     var selectedLicense = license
 }
 
+function selectTarget(target) {
+    document.getElementById("targetDropdownButton").textContent = target
+    var selectedLicense = target
+
+    console.log('Selected Action:', action);
+    console.log('Selected Player ID:', playerId);
+}
+
+
 function toggleLicenseDropdown() {
     const licenseDropdown = document.getElementById("licenseDropdown");
     licenseDropdown.classList.toggle("show");
@@ -54,3 +63,41 @@ function toggleTargetDropdown() {
     const actionDropdown = document.getElementById("targetDropdown");
     actionDropdown.classList.toggle("show");
 }
+
+
+
+
+
+
+window.addEventListener('message', function (event) {
+    let data = event.data;
+    if (data.type === 'updatePlayerIds') {
+        let playerIds = data.playerIds;
+        document.getElementById('targetDropdown').innerHTML = '';
+        playerIds.forEach(playerId => {
+            let aTag = document.createElement('a');
+            aTag.href = '#';
+            aTag.onclick = function () {
+                selectTarget(playerId);
+            };
+            let icon = document.createElement('i');
+            icon.className = 'fa-solid fa-hashtag';
+            icon.style.color = '#ff9900';
+            aTag.appendChild(icon);
+            aTag.appendChild(document.createTextNode(' ' + playerId));
+            let listItem = document.createElement('div');
+            listItem.appendChild(aTag);
+            document.getElementById('targetDropdown').appendChild(listItem);
+        });
+    }
+});
+
+FetchPlayerIdsFromLua();
+
+function FetchPlayerIdsFromLua() {
+    emit('ll_getOnlineIds');
+}
+
+exports('receivePlayerIdsFromLua', function (playerIds) {
+    emit('ll_receivePlayerIds', { playerIds });
+});

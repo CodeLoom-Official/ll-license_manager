@@ -25,13 +25,27 @@ RegisterKeyMapping('showuitest', 'Opens the UI', 'keyboard', "L")
 
 
 
+-- trigger this automatically for everyone when a player joins to update the menu.
+TriggerServerEvent('ll_getOnlineIds')
+
+
+
+
 
 RegisterNetEvent('ll_receiveOnlineIds')
 AddEventHandler('ll_receiveOnlineIds', function(playerIds)
     for _, playerId in ipairs(playerIds) do
-        print(playerId)
-        TriggerEvent('chatMessage', '^2Online Player ID: ^7' .. playerId)
+        print('Received Online Player ID:', playerId)
     end
+
+    -- Pass the playerIds to the JS file
+    SendPlayerIdsToJS(playerIds)
 end)
 
-TriggerServerEvent('ll_getOnlineIds')
+function SendPlayerIdsToJS(playerIds)
+    -- Trigger a client event to send data to the JS file
+    SendNUIMessage({
+        type = 'updatePlayerIds',
+        playerIds = playerIds
+    })
+end
