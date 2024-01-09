@@ -1,3 +1,13 @@
+ESX = exports["es_extended"]:getSharedObject()
+
+AddEventHandler('playerConnecting', function()
+    TriggerServerEvent('ll_getOnlineIds')
+end)
+
+AddEventHandler('playerDropped', function(reason)
+    TriggerServerEvent('ll_getOnlineIds')
+end)
+
 function ll_InitializeDropdown(playerId)
     local playerIds = {}
     for _, player in ipairs(GetPlayers()) do
@@ -21,13 +31,6 @@ RegisterCommand("getlicenseinfo", function(source, args, rawCommand)
     end)
 end, false)
 
-
-
-
-
-
-
-
 RegisterServerEvent('ll_getOnlineIds')
 AddEventHandler('ll_getOnlineIds', function()
     local playerIds = {}
@@ -37,7 +40,6 @@ AddEventHandler('ll_getOnlineIds', function()
     TriggerClientEvent('ll_receiveOnlineIds', -1, playerIds)
 end)
 
--- Export a function to get online player IDs
 exports('getOnlinePlayerIds', function()
     local playerIds = {}
     for _, player in ipairs(GetPlayers()) do
