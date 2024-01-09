@@ -48,7 +48,6 @@ function selectTarget(target) {
     console.log('Selected Player ID:', playerId);
 }
 
-
 function toggleLicenseDropdown() {
     const licenseDropdown = document.getElementById("licenseDropdown");
     licenseDropdown.classList.toggle("show");
@@ -63,11 +62,6 @@ function toggleTargetDropdown() {
     const actionDropdown = document.getElementById("targetDropdown");
     actionDropdown.classList.toggle("show");
 }
-
-
-
-
-
 
 window.addEventListener('message', function (event) {
     let data = event.data;
@@ -93,11 +87,3 @@ window.addEventListener('message', function (event) {
 });
 
 FetchPlayerIdsFromLua();
-
-function FetchPlayerIdsFromLua() {
-    emit('ll_getOnlineIds');
-}
-
-exports('receivePlayerIdsFromLua', function (playerIds) {
-    emit('ll_receivePlayerIds', { playerIds });
-});

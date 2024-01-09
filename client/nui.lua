@@ -2,7 +2,7 @@ ESX = exports["es_extended"]:getSharedObject()
 
 local uiVisible = false
 
--- Remove this later on after testing.
+-- Remove this later on after testing. (Replace with something that makes everything happened based on when people join or leave the server)
 TriggerServerEvent('ll_getOnlineIds')
 
 RegisterCommand('showuitest', function()
@@ -25,9 +25,6 @@ RegisterKeyMapping('showuitest', 'Opens the UI', 'keyboard', "L")
 
 RegisterNetEvent('ll_receiveOnlineIds')
 AddEventHandler('ll_receiveOnlineIds', function(playerIds)
-    for _, playerId in ipairs(playerIds) do
-        print('Received Online Player ID:', playerId)
-    end
     SendPlayerIdsToJS(playerIds)
 end)
 
