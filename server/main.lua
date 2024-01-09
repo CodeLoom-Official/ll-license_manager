@@ -21,9 +21,17 @@ RegisterCommand("getlicenseinfo", function(source, args, rawCommand)
     end)
 end, false)
 
+
+
+
+
+
 -- Example of how we are going to fill the ID dropdown later on.
-RegisterCommand('ll_getOnlineIds', function()
-    for _, player in ipairs(GetPlayers()) do
-        print(player)
-    end
+RegisterServerEvent('ll_getOnlineIds')
+AddEventHandler('ll_getOnlineIds', function()
+    local ll_playerIds = {}
+    for _, playerIds in ipairs(ll_playerIds) do
+        table.insert(ll_playerIds, playerIds)
+    end  
+    TriggerClientEvent('ll_receiveOnlineIds', -1, ll_playerIds)
 end)

@@ -19,3 +19,19 @@ RegisterNUICallback('closeUI', function(data)
 end)
 
 RegisterKeyMapping('showuitest', 'Opens the UI', 'keyboard', "L")
+
+
+
+
+
+
+
+RegisterNetEvent('ll_receiveOnlineIds')
+AddEventHandler('ll_receiveOnlineIds', function(playerIds)
+    for _, playerId in ipairs(playerIds) do
+        print(playerId)
+        TriggerEvent('chatMessage', '^2Online Player ID: ^7' .. playerId)
+    end
+end)
+
+TriggerServerEvent('ll_getOnlineIds')
