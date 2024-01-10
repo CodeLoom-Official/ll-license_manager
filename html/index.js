@@ -94,56 +94,20 @@ window.addEventListener('message', function (event) {
 
 
 
-window.addEventListener('message', function (event) {
-    let data = event.data;
 
-    if (data.type === 'updateLicenses') {
-        let ll_type = data.ll_license_type;
-        let ll_label = data.ll_license_label;
-        let combiner = ll_label + ' | ' + ll_type;
-        let combinerArray = combiner.split(" | ");
-        document.getElementById('licenseDropdown').innerHTML = '';
 
-        let uniqueItems = [];
 
-        for (let i = 0; i < combinerArray.length; i += 2) {
-            let display_label = combinerArray[i];
-            let metadata = combinerArray[i + 1];
+window.addEventListener('message', function (license_event) {
+    let license_data = license_event.data;
+    if (license_data.type === 'updateLicenses') {
         
-            let itemObject = {
-                display_label: display_label,
-                metadata: metadata
-            };
-        
-            if (!uniqueItems.some(item => item.display_label === itemObject.display_label && item.metadata === itemObject.metadata)) {
-                uniqueItems.push(itemObject);
-            }
-        }
-        
-        uniqueItems.forEach(item => {
-            console.log("Display Label:", item.display_label);
-            console.log("Metadata:", item.metadata);
-            console.log("-------------------------------------------------------------------");
-        
-            let aTag = document.createElement('a');
-            aTag.href = '#';
-        
-            // Use let to create a new variable scope for each iteration
-            let currentMetadata = item.metadata;
-            aTag.onclick = function () {
-                selectLicense(currentMetadata);
-            };
-        
-            let icon = document.createElement('i');
-            icon.className = 'fa-solid fa-hashtag';
-            icon.style.color = '#ff9900';
-        
-            aTag.appendChild(icon);
-            aTag.appendChild(document.createTextNode(' ' + item.display_label));
-        
-            let listItem = document.createElement('div');
-            listItem.appendChild(aTag);
-            document.getElementById('licenseDropdown').appendChild(listItem);
+
+
+        //That license_label shit at the end is the name for each drop down item box
+        license_data.license_data.forEach(license_label => {
+
+            //test print to make sure we are getting the values that we want to see.
+            console.log(license_label)
         });
     }
 });

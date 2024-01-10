@@ -45,22 +45,11 @@ end
 
 
 
--- Testing function to see what values we are getting back
+-- This will pass JUST the license label to the JS file currently.
 RegisterNetEvent('ll_test')
 AddEventHandler('ll_test', function(testData)
-
-    for _, data in ipairs(testData) do
-        
-        -- Test prints to make sure the data is being recieved as it should.
-        print(data.type)
-        print(data.label)
-        print('-----------------')
-
-        -- try sending the nui message inside the same loop as the recieve?
-        SendNUIMessage({
-            type = 'updateLicenses',
-            ll_license_type = data.type,
-            ll_license_label = data.label
-        })
-    end
+    SendNUIMessage({
+        type = 'updateLicenses',
+        license_data = testData
+    })
 end)
