@@ -6,27 +6,36 @@
     <script src="index.js"></script>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lemon&display=swap">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="OurDiv">
+        <div class="Title">
+            <i class="fa-solid fa-file-alt" style="font-size: 24px; margin-right: 10px; color: #F4AC00;"></i>
+            License Manager
+        </div>
+        
         <div class="CloseButton">            
             <i class="fa-solid fa-ban" style="color: #ff6666;" onclick="closeUI()"></i>
         </div> 
         <div class="Dropdown" onclick="toggleActionDropdown()">
-            <div class="DropdownButton" id="actionDropdownButton">Action <span class="DropdownArrow">▼</span></div>
+            <div class="DropdownButton" id="actionDropdownButton"><i class="fa-solid fa-question" style="color: #F4AC00;"></i> <strong>‎ Action</strong> <span class="DropdownArrow">▼</span></div>
             <div class="DropdownAction" id="actionDropdown">
-                <a href="#" onclick="selectAction('Revoke')"><i class="fa-solid fa-trash" style="color: #ff6666;"></i> Revoke</a>
-                <a href="#" onclick="selectAction('Award')"><i class="fa-solid fa-hand-holding-heart" style="color: #66ff66;"></i> Award</a>
+                <a href="#" onclick="selectAction('Revoke')"><i class="fa-solid fa-trash" style="color: #ff6666;"></i> <strong>Revoke</strong></a>
+                <a href="#" onclick="selectAction('Award')"><i class="fa-solid fa-hand-holding-heart" style="color: #66ff66;"></i> <strong>Award</strong></a>
             </div>
         </div>
         <div class="Dropdown" onclick="toggleLicenseDropdown()">
-            <div class="DropdownButton" id="licenseDropdownButton">License <span class="DropdownArrow">▼</span></div>
+            <div class="DropdownButton" id="licenseDropdownButton"><i class="fa-solid fa-id-card" style="color: #F4AC00;"></i> <strong>‎ License</strong> <span class="DropdownArrow">▼</span></div>
             <div class="DropdownLicense" id="licenseDropdown">
             </div>
         </div>
         <div class="Dropdown" onclick="toggleTargetDropdown()">
-            <div class="DropdownButton" id="targetDropdownButton">Target <span class="DropdownArrow">▼</span></div>
+            <div class="DropdownButton" id="targetDropdownButton"><i class="fa-solid fa-bullseye" style="color: #F4AC00;"></i> <strong>‎ Target</strong> <span class="DropdownArrow">▼</span></div>
             <div class="DropdownTarget" id="targetDropdown">
             </div>
         </div>
@@ -34,8 +43,5 @@
             <i class="fa-solid fa-check" style="color: #66ff66; margin-right: 15px;" onclick="processInformation()"></i>
         </div>
     </div>
-
-
-
 </body>
 </html>

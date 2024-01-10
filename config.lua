@@ -1,3 +1,3 @@
 Config = {}
 
-Config.openMenu = "L"
+Config.openMenu = "L",

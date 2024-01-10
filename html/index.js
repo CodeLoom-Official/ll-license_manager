@@ -66,7 +66,6 @@ function selectTarget(target) {
     document.getElementById("targetDropdownButton").appendChild(icon);
     document.getElementById("targetDropdownButton").appendChild(document.createTextNode(' ' + target));
     var selectedTarget = target;
-    console.log('Selected Target:', target);
 }
 
 function toggleLicenseDropdown() {
@@ -112,7 +111,6 @@ window.addEventListener('message', function (license_event) {
     if (license_data.type === 'updateLicenses') {
         document.getElementById('licenseDropdown').innerHTML = '';
         license_data.license_data.forEach(license_label => {
-            console.log(license_label)
             let aTag = document.createElement('a');
             aTag.href = '#';
             aTag.onclick = function () {
