@@ -34,3 +34,17 @@ function SendPlayerIdsToJS(playerIds)
         playerIds = playerIds
     })
 end
+
+-- Below here is testing for sending license data to JS and using it for the new dynamic dropdown.
+
+RegisterNetEvent('ll_receiveLicenseData')
+AddEventHandler('ll_receiveLicenseData', function(ll_license_type, ll_license_label)
+    ll_sendLicenses(ll_license_label)
+end)
+
+function ll_sendLicenses(ll_license_type, ll_license_label)
+    SendNUIMessage({
+        ll_license_type = ll_license_type,
+        ll_license_label = ll_license_label
+    })
+end
