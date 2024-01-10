@@ -98,13 +98,20 @@ window.addEventListener('message', function (event) {
 window.addEventListener('message', function (event) {
     let data = event.data
 
-
     if (data.type === 'updateLicenses') {
 
         let ll_type = data.ll_license_type
         let ll_label = data.ll_license_label
 
-        console.log('Type:', ll_type);
-        console.log('Label:', ll_label);
+        // Combine the findings for testing purposes.
+        let combiner = ll_type + " | " + ll_label;
+
+        //console.log('COMBINER:', combiner);
+
+        // Split combiner into ll_type and ll_label when needed
+        let [restored_ll_type, restored_ll_label] = combiner.split(" | ");
+        console.log('Restored ll_type:', restored_ll_type);
+        console.log('Restored ll_label:', restored_ll_label);
+        console.log('------------------------------------')
     }
 });
