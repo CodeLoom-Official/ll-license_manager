@@ -94,24 +94,37 @@ window.addEventListener('message', function (event) {
 
 
 
-
 window.addEventListener('message', function (event) {
-    let data = event.data
+
+    let data = event.data;
 
     if (data.type === 'updateLicenses') {
 
-        let ll_type = data.ll_license_type
-        let ll_label = data.ll_license_label
+        // Define the shit that we need
+        let ll_type = data.ll_license_type;
+        let ll_label = data.ll_license_label;
 
-        // Combine the findings for testing purposes.
-        let combiner = ll_type + " | " + ll_label;
+        //Combie it and prepare it to split at a later time
+        let combiner = ll_label + ' | ' + ll_type
+        let combinerArray = combiner.split(" | ");
 
-        //console.log('COMBINER:', combiner);
+        //Prepare the placeholder vars for the dropdown later on.
+        let processed_metadata = "placeholder"
+        let processed_label = "placeholder"
 
-        // Split combiner into ll_type and ll_label when needed
-        let [restored_ll_type, restored_ll_label] = combiner.split(" | ");
-        console.log('Restored ll_type:', restored_ll_type);
-        console.log('Restored ll_label:', restored_ll_label);
-        console.log('------------------------------------')
+        for (let i = 0; i < combinerArray.length; i += 2) {
+            let metadata = combinerArray[i];
+            let label = combinerArray[i + 1];
+            processed_metadata = metadata
+            processed_label = label
+        }
+
+        console.log(processed_metadata)
+        console.log(processed_label)
+        console.log('-----------------------------------------------------------')
+
+
+        
+
     }
 });
