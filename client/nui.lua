@@ -4,6 +4,7 @@ local uiVisible = false
 
 -- Remove this later on after testing. (Replace with something that makes everything happened based on when people join or leave the server)
 TriggerServerEvent('ll_getOnlineIds')
+TriggerServerEvent('ll_fetchLicenses')
 
 RegisterCommand('showuitest', function()
     uiVisible = not uiVisible
@@ -35,16 +36,31 @@ function SendPlayerIdsToJS(playerIds)
     })
 end
 
+
+
+
+
+
 -- Below here is testing for sending license data to JS and using it for the new dynamic dropdown.
 
-RegisterNetEvent('ll_receiveLicenseData')
-AddEventHandler('ll_receiveLicenseData', function(ll_license_type, ll_license_label)
-    ll_sendLicenses(ll_license_label)
-end)
 
-function ll_sendLicenses(ll_license_type, ll_license_label)
-    SendNUIMessage({
-        ll_license_type = ll_license_type,
-        ll_license_label = ll_license_label
-    })
-end
+
+-- Testing function to see what values we are getting back
+RegisterNetEvent('ll_test')
+AddEventHandler('ll_test', function(testData)
+
+    for _, data in ipairs(testData) do
+        
+        -- Test prints to make sure the data is being recieved as it should.
+        print(data.type)
+        print(data.label)
+        print('-----------------')
+
+        -- try sending the nui message inside the same loop as the recieve?
+        SendNUIMessage({
+            type = 'updateLicenses',
+            ll_license_type = data.type,
+            ll_license_label = data.label
+        })
+    end
+end)

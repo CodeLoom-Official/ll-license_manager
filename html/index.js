@@ -85,3 +85,26 @@ window.addEventListener('message', function (event) {
         });
     }
 });
+
+
+
+
+
+
+
+
+
+
+window.addEventListener('message', function (event) {
+    let data = event.data
+
+
+    if (data.type === 'updateLicenses') {
+
+        let ll_type = data.ll_license_type
+        let ll_label = data.ll_license_label
+
+        console.log('Type:', ll_type);
+        console.log('Label:', ll_label);
+    }
+});
