@@ -104,10 +104,24 @@ window.addEventListener('message', function (license_event) {
 
 
         //That license_label shit at the end is the name for each drop down item box
+        document.getElementById('targetDropdown').innerHTML = '';
         license_data.license_data.forEach(license_label => {
 
             //test print to make sure we are getting the values that we want to see.
             console.log(license_label)
+            let aTag = document.createElement('a');
+            aTag.href = '#';
+            aTag.onclick = function () {
+                selectTarget(license_label);
+            };
+            let icon = document.createElement('i');
+            icon.className = 'fa-solid fa-hashtag';
+            icon.style.color = '#ff9900';
+            aTag.appendChild(icon);
+            aTag.appendChild(document.createTextNode(' ' + license_label));
+            let listItem = document.createElement('div');
+            listItem.appendChild(aTag);
+            document.getElementById('licenseDropdown').appendChild(listItem);
         });
     }
 });
