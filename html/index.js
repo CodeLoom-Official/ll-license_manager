@@ -100,31 +100,21 @@ window.addEventListener('message', function (event) {
 
     if (data.type === 'updateLicenses') {
 
-        // Define the shit that we need
         let ll_type = data.ll_license_type;
         let ll_label = data.ll_license_label;
-
-        //Combie it and prepare it to split at a later time
         let combiner = ll_label + ' | ' + ll_type
         let combinerArray = combiner.split(" | ");
-
-        //Prepare the placeholder vars for the dropdown later on.
-        let processed_metadata = "placeholder"
-        let processed_label = "placeholder"
 
         for (let i = 0; i < combinerArray.length; i += 2) {
             let metadata = combinerArray[i];
             let label = combinerArray[i + 1];
-            processed_metadata = metadata
-            processed_label = label
+
+
+            console.log(metadata)
+            console.log(label)
+            console.log('---------------------------------------------------')
+
+
         }
-
-        console.log(processed_metadata)
-        console.log(processed_label)
-        console.log('-----------------------------------------------------------')
-
-
-        
-
     }
 });
