@@ -5,6 +5,7 @@ local uiVisible = false
 -- Remove this later on after testing. (Replace with something that makes everything happened based on when people join or leave the server)
 TriggerServerEvent('ll_getOnlineIds')
 TriggerServerEvent('ll_fetchLicenses')
+-------------------------------------------------------------------------------------------------------------------------------------------
 
 RegisterCommand('showuitest', function()
     uiVisible = not uiVisible

@@ -5,9 +5,11 @@ window.addEventListener('message', function (event) {
     if (item.showUI) {
         ourDiv.style.opacity = '1';
         ourDiv.classList.add('show');
+        $('.background-blur').css('opacity', '1');
     } else {
         ourDiv.style.opacity = '0';
         ourDiv.classList.remove('show');
+        $('.background-blur').css('opacity', '0');
     }
 });
 
@@ -39,7 +41,7 @@ function selectAction(action) {
             break;
     }
     document.getElementById("actionDropdownButton").appendChild(icon);
-    document.getElementById("actionDropdownButton").appendChild(document.createTextNode(' ' + action));
+    document.getElementById("actionDropdownButton").appendChild(document.createTextNode('‎ ' + action));
     var selectedAction = action;
 }
 
@@ -56,7 +58,7 @@ function selectLicense(license) {
     icon.className = 'fa-solid fa-id-card-clip';
     icon.style.color = '#ff9900';
     document.getElementById("licenseDropdownButton").appendChild(icon);
-    document.getElementById("licenseDropdownButton").appendChild(document.createTextNode(' ' + license));
+    document.getElementById("licenseDropdownButton").appendChild(document.createTextNode('‎ ' + license));
     var selectedLicense = license;
 }
 
@@ -64,7 +66,7 @@ function selectTarget(target) {
     document.getElementById("targetDropdownButton").innerHTML = '';
     let icon = createFontAwesomeIcon('fa-hashtag', '#ff9900');
     document.getElementById("targetDropdownButton").appendChild(icon);
-    document.getElementById("targetDropdownButton").appendChild(document.createTextNode(' ' + target));
+    document.getElementById("targetDropdownButton").appendChild(document.createTextNode(' ID: ' + target));
     var selectedTarget = target;
 }
 
@@ -134,3 +136,9 @@ function processInformation() {
     let targetFinal = document.getElementById("targetDropdownButton").textContent.trim()
     console.log("you want to " + actionFinal + ", " + licenseFinal + " from " + targetFinal);
 }
+
+
+
+
+
+

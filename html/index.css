@@ -12,40 +12,31 @@
     justify-content: center;
     text-align: center;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 0 0 3px orange, 0 0 10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.8);
     opacity: 0;
     transition: opacity 1s;
     z-index: 9999;
-
-    /* Orange Inner Outline */
-    box-shadow:
-        inset 0 0 0 3px orange,
-        0 0 10px rgba(0, 0, 0, 0.5),
-        0 0 20px rgba(255, 165, 0, 0.8); /* Adjust the gradient color and size as needed */
 }
-
-
 
 .DropdownAction::-webkit-scrollbar,
 .DropdownLicense::-webkit-scrollbar,
 .DropdownTarget::-webkit-scrollbar {
-    width: 12px; /* Adjust the width as needed */
+    width: 12px;
 }
 
 .DropdownAction::-webkit-scrollbar-thumb,
 .DropdownLicense::-webkit-scrollbar-thumb,
 .DropdownTarget::-webkit-scrollbar-thumb {
-    background-color: #ccc; /* Color of the scrollbar thumb */
-    border-radius: 8px; /* Adjust the border-radius to round the corners */
+    background-color: #ccc;
+    border-radius: 8px;
 }
 
 .DropdownAction::-webkit-scrollbar-track,
 .DropdownLicense::-webkit-scrollbar-track,
 .DropdownTarget::-webkit-scrollbar-track {
-    background-color: #f1f1f1; /* Color of the scrollbar track */
-    border-radius: 8px; /* Adjust the border-radius to round the corners */
+    background-color: #f1f1f1;
+    border-radius: 8px;
 }
-
 
 .OurDiv.show {
     opacity: 0.8;
@@ -71,11 +62,6 @@
     font-size: 20px;
 }
 
-.CloseButton img {
-    width: 30px;
-    height: auto;
-}
-
 .Dropdown {
     position: relative;
     display: inline-block;
@@ -83,7 +69,8 @@
     padding: 4px;
 }
 
-.DropdownButton {
+.DropdownButton,
+.CompleteButton {
     padding: 8px;
     cursor: pointer;
     display: flex;
@@ -96,11 +83,16 @@
     font-family: 'Lemon', sans-serif;
     font-weight: bold;
     font-size: 12px;
-    margin-bottom: 5px; /* Adjust the value as needed */
+    margin-bottom: 5px;
+    overflow: hidden;
+    position: relative;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
-.DropdownButton:hover {
-    background-color: rgb(238, 215, 140);
+.DropdownButton:hover,
+.CompleteButton:hover {
+    background-color: #F4AC00;
+    border: 1px solid #F4AC00;
 }
 
 .DropdownAction,
@@ -112,7 +104,7 @@
     min-width: 150px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
-    top: 30px; /* Adjust the value to make the gap smaller */
+    top: 30px;
     left: 50%;
     transform: translateX(-50%);
     opacity: 0;
@@ -152,41 +144,45 @@
     background-color: #ddd;
 }
 
-
-
-.CompleteButton2 {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 150px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    transition: opacity 0.3s, transform 0.3s;
-    user-select: none;
-    border-radius: 5px;
-    max-height: 150px;
-    overflow-y: auto;
-    font-family: 'Lemon', sans-serif;
-    font-weight: bold;
-    font-size: 12px;
+.CompleteButton {
+    position: relative;
+    overflow: hidden;
 }
 
-.CompleteButton {
-    padding: 8px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #66ff66;
-    border: 1px solid #66ff66;
-    border-radius: 6px;
-    user-select: none;
-    font-family: 'Lemon', sans-serif;
-    font-weight: bold;
-    font-size: 12px;
-    margin-bottom: 5px; /* Adjust the value as needed */
+.CompleteButton:hover {
+    background-color: #4cae4c;
+    border: 1px solid #4cae4c;
+}
+
+.DropdownButton::before,
+.CompleteButton::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.3) 25%, transparent 50%, rgba(255, 255, 255, 0.3) 75%);
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(1);
+    transition: opacity 0.3s, transform 0.3s, background-position 0.5s;
+    background-size: 200% 200%;
+    background-position: 100% 0;
+}
+
+.DropdownButton:hover::before,
+.CompleteButton:hover::before {
+    opacity: 1;
+    transform: scale(2);
+    background-position: 0 0;
+}
+
+.CompleteButton::after {
+    right: -100%;
+    opacity: 0;
+}
+
+.CompleteButton:hover::after {
+    opacity: 1;
 }
