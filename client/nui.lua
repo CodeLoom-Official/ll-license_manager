@@ -16,6 +16,7 @@ RegisterCommand('showuitest', function()
         SendNUIMessage({ showUI = false })
         SetNuiFocus(false, false)
     end
+    
 end, false)
 
 RegisterNUICallback('closeUI', function(data)
