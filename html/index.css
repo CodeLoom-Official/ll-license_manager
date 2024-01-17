@@ -3,9 +3,9 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 22%;
-    height: 25%;
-    background: linear-gradient(rgb(55, 52, 66), rgb(41, 38, 51), rgb(55, 52, 66));
+    width: 31%;
+    height: 17%;
+    background: linear-gradient(rgb(50, 47, 59), rgb(41, 38, 51), rgb(55, 52, 66));
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -52,6 +52,9 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+.DropdownContainer {
+    display: flex;
+}
 
 .CloseButton {
     position: absolute;
@@ -61,7 +64,7 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .Dropdown {
@@ -71,8 +74,7 @@
     padding: 4px;
 }
 
-.DropdownButton,
-.CompleteButton {
+.DropdownButton {
     padding: 8px;
     cursor: pointer;
     display: flex;
@@ -88,7 +90,40 @@
     overflow: hidden;
     position: relative;
     transition: background-color 0.3s, border-color 0.3s;
-    border-radius: 4px; /* Adjust the border-radius value to make corners less rounded */
+    border-radius: 4px;
+}
+
+.CompleteButton {
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #00ff2a48;
+    border: 1px solid rgba(21, 255, 0, 0.37);
+    user-select: none;
+    font-family: 'Lemon', sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    position: relative;
+    transition: background-color 0.3s, border-color 0.3s;
+    border-radius: 4px;
+}
+
+.Dropdown::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -5px;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(rgba(255, 255, 255, 0), #ffffff, rgba(255, 255, 255, 0));
+}
+
+.Dropdown:last-child::after {
+    content: none;
 }
 
 .DropdownButton:hover,
